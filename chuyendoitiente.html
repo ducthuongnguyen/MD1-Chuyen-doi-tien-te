@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển đổi tiền tệ</title>
+</head>
+<body>
+<table style="width: 500px">
+    <th>Amount</th>
+    <th>From Currency</th>
+    <th>To Currency</th>
+    <th></th>
+    <tr>
+        <td><input type="number" id="inputNumber"></td>
+        <td><select name="" id="s1" onchange='exCurrency()'>
+            <option value="VND">VietNam</option>
+            <option value="USD">USD</option>
+        </select></td>
+        <td><select name="" id="s2" onchange="exCurrency()">
+            <option value="VND">VietNam</option>
+            <option value="USD">USD</option>
+        </select></td>
+        <td>
+            <button onclick="exCurrency()">Convert</button>
+        </td>
+    </tr>
+</table>
+<p id="rs"></p>
+<script>
+    function exCurrency() {
+        let amount = +document.getElementById('inputNumber').value;
+        let select1 = document.getElementById('s1').value;
+        let select2 = document.getElementById('s2').value;
+        let result;
+        if (select1 === select2) {
+            result = amount;
+        } else {
+            if (select1 === "USD") {
+                result = amount * 22960;
+            } else {
+                result = amount / 22960;
+            }
+        }
+        document.getElementById('rs').innerHTML = "Số tiền chuyển đổi là: " + result;
+    }
+</script>
+</body>
+</html>
